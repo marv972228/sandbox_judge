@@ -44,3 +44,6 @@ docker-compose.override.yml
 # Temporary files
 tmp/
 *.tmp
+
+# PR Description ignore as its a template
+PR_DESCRIPTION.md
