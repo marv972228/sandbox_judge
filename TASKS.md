@@ -34,18 +34,19 @@ This document tracks implementation progress with testable milestones.
 ---
 
 ### 1.3 Docker Runner (Python Only)
-- [ ] Create Python runner Dockerfile (`docker/python/Dockerfile`)
-- [ ] Define `Runner` interface in `internal/runner/runner.go`
-- [ ] Implement `DockerRunner` in `internal/runner/docker.go`
-  - [ ] Build/pull image
-  - [ ] Mount source code
-  - [ ] Execute with stdin from test input
-  - [ ] Capture stdout, stderr, exit code
-  - [ ] Enforce time limit (`--stop-timeout`)
-  - [ ] Enforce memory limit (`--memory`)
-- [ ] Add basic resource measurement (wall clock time)
+- [x] Create Python runner Dockerfile (`docker/python/Dockerfile`)
+- [x] Define `Runner` interface in `internal/runner/runner.go`
+- [x] Implement `DockerRunner` in `internal/runner/docker.go`
+  - [x] Build/pull image
+  - [x] Mount source code
+  - [x] Execute with stdin from test input
+  - [x] Capture stdout, stderr, exit code
+  - [x] Enforce time limit (`--stop-timeout`)
+  - [x] Enforce memory limit (`--memory`)
+- [x] Add basic resource measurement (wall clock time)
+- [x] Verify Go code works (cmd/testrunner - AC, TLE verdicts tested)
 
-**✅ Checkpoint:** Can manually run Python code in container and see output
+**✅ Checkpoint:** Can manually run Python code in container and see output ✓
 
 ---
 

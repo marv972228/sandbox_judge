@@ -1,4 +1,4 @@
-.PHONY: build test run clean help
+.PHONY: build test run clean help docker-build docker-build-python
 
 # Binary name
 BINARY=judge
@@ -46,6 +46,15 @@ lint:
 ## tidy: Tidy dependencies
 tidy:
 	go mod tidy
+
+## docker-build: Build all Docker runner images
+docker-build: docker-build-python
+	@echo "All Docker images built"
+
+## docker-build-python: Build Python runner image
+docker-build-python:
+	@echo "Building Python runner image..."
+	docker build -t sandbox-judge-python:latest ./docker/python
 
 ## help: Show this help
 help:
