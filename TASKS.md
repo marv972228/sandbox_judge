@@ -1,3 +1,52 @@
+- [Sandbox Judge - Development Tasks](#sandbox-judge---development-tasks)
+  - [Phase 1: Foundation (CLI + Single Language)](#phase-1-foundation-cli--single-language)
+    - [1.1 Project Setup](#11-project-setup)
+    - [1.2 Problem Loader](#12-problem-loader)
+    - [1.3 Docker Runner (Python Only)](#13-docker-runner-python-only)
+    - [1.4 Output Comparator](#14-output-comparator)
+    - [1.5 Judge Engine (Core Loop)](#15-judge-engine-core-loop)
+    - [1.6 Basic CLI Polish](#16-basic-cli-polish)
+  - [Phase 2: Multi-Language Support](#phase-2-multi-language-support)
+    - [2.1 Language Configuration](#21-language-configuration)
+    - [2.2 Additional Runners](#22-additional-runners)
+    - [2.3 Compilation Support](#23-compilation-support)
+  - [Phase 3: Storage \& Progress Tracking](#phase-3-storage--progress-tracking)
+    - [3.1 Storage Interface](#31-storage-interface)
+    - [3.2 Progress Tracking](#32-progress-tracking)
+  - [Phase 4: Problem Library](#phase-4-problem-library)
+    - [4.1 Problem Categories \& Coverage](#41-problem-categories--coverage)
+    - [4.2 Arrays (6 problems)](#42-arrays-6-problems)
+    - [4.3 Strings (6 problems)](#43-strings-6-problems)
+    - [4.4 Hash Tables (5 problems)](#44-hash-tables-5-problems)
+    - [4.5 Linked Lists (5 problems)](#45-linked-lists-5-problems)
+    - [4.6 Stacks \& Queues (4 problems)](#46-stacks--queues-4-problems)
+    - [4.7 Trees \& Graphs (5 problems)](#47-trees--graphs-5-problems)
+    - [4.8 Dynamic Programming (5 problems)](#48-dynamic-programming-5-problems)
+    - [4.9 Sorting \& Searching (5 problems)](#49-sorting--searching-5-problems)
+    - [4.10 Problem Quality Checklist](#410-problem-quality-checklist)
+    - [4.11 Additional Comparators](#411-additional-comparators)
+  - [Phase 5: Web UI (Basic)](#phase-5-web-ui-basic)
+    - [5.1 API Server](#51-api-server)
+    - [5.2 React Frontend Setup](#52-react-frontend-setup)
+    - [5.3 Problem List Page](#53-problem-list-page)
+    - [5.4 Problem Detail Page](#54-problem-detail-page)
+    - [5.5 Submission \& Results](#55-submission--results)
+  - [Phase 6: Polish \& Quality of Life](#phase-6-polish--quality-of-life)
+    - [6.1 Better Error Handling](#61-better-error-handling)
+    - [6.2 Performance](#62-performance)
+    - [6.3 Documentation](#63-documentation)
+  - [Phase 7: Documentation Site](#phase-7-documentation-site)
+    - [7.1 MkDocs Setup](#71-mkdocs-setup)
+    - [7.2 User Documentation](#72-user-documentation)
+    - [7.3 Problem Author Documentation](#73-problem-author-documentation)
+    - [7.4 Deployment Documentation](#74-deployment-documentation)
+    - [7.5 Developer Documentation](#75-developer-documentation)
+    - [7.6 Publishing](#76-publishing)
+  - [Future Ideas (Backlog)](#future-ideas-backlog)
+  - [Current Focus](#current-focus)
+  - [Notes](#notes)
+
+
 # Sandbox Judge - Development Tasks
 
 This document tracks implementation progress with testable milestones.
@@ -34,18 +83,19 @@ This document tracks implementation progress with testable milestones.
 ---
 
 ### 1.3 Docker Runner (Python Only)
-- [ ] Create Python runner Dockerfile (`docker/python/Dockerfile`)
-- [ ] Define `Runner` interface in `internal/runner/runner.go`
-- [ ] Implement `DockerRunner` in `internal/runner/docker.go`
-  - [ ] Build/pull image
-  - [ ] Mount source code
-  - [ ] Execute with stdin from test input
-  - [ ] Capture stdout, stderr, exit code
-  - [ ] Enforce time limit (`--stop-timeout`)
-  - [ ] Enforce memory limit (`--memory`)
-- [ ] Add basic resource measurement (wall clock time)
+- [x] Create Python runner Dockerfile (`docker/python/Dockerfile`)
+- [x] Define `Runner` interface in `internal/runner/runner.go`
+- [x] Implement `DockerRunner` in `internal/runner/docker.go`
+  - [x] Build/pull image
+  - [x] Mount source code
+  - [x] Execute with stdin from test input
+  - [x] Capture stdout, stderr, exit code
+  - [x] Enforce time limit (`--stop-timeout`)
+  - [x] Enforce memory limit (`--memory`)
+- [x] Add basic resource measurement (wall clock time)
+- [x] Verify Go code works (cmd/testrunner - AC, TLE verdicts tested)
 
-**✅ Checkpoint:** Can manually run Python code in container and see output
+**✅ Checkpoint:** Can manually run Python code in container and see output ✓
 
 ---
 
