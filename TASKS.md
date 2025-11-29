@@ -169,23 +169,133 @@ Problems: 3/10 solved
 
 ---
 
-## Phase 4: More Problems & Comparators
+## Phase 4: Problem Library
 
-**Goal:** Have 10+ problems with variety.
+**Goal:** Curated problem set covering common interview topics at varying difficulties.
 
-### 4.1 Additional Problems
-- [ ] `reverse-string` (easy, string manipulation)
-- [ ] `valid-parentheses` (easy, stack)
-- [ ] `binary-search` (easy, algorithm)
-- [ ] `merge-sorted-arrays` (medium, two pointers)
-- [ ] `longest-substring` (medium, sliding window)
-- [ ] Add at least 3 hidden test cases per problem
+### 4.1 Problem Categories & Coverage
 
-**✅ Checkpoint:** 10 problems available via `judge list`
+Target: **30+ problems** across these categories:
+
+| Category | Easy | Medium | Hard | Total |
+|----------|------|--------|------|-------|
+| Arrays | 3 | 2 | 1 | 6 |
+| Strings | 3 | 2 | 1 | 6 |
+| Hash Tables | 2 | 2 | 1 | 5 |
+| Linked Lists | 2 | 2 | 1 | 5 |
+| Stacks & Queues | 2 | 1 | 1 | 4 |
+| Trees & Graphs | 2 | 2 | 1 | 5 |
+| Dynamic Programming | 1 | 2 | 2 | 5 |
+| Sorting & Searching | 2 | 2 | 1 | 5 |
+| **Total** | **17** | **15** | **9** | **41** |
 
 ---
 
-### 4.2 Additional Comparators
+### 4.2 Arrays (6 problems)
+- [ ] **Easy:** Two Sum
+- [ ] **Easy:** Best Time to Buy and Sell Stock
+- [ ] **Easy:** Contains Duplicate
+- [ ] **Medium:** Product of Array Except Self
+- [ ] **Medium:** Maximum Subarray (Kadane's)
+- [ ] **Hard:** Trapping Rain Water
+
+**✅ Checkpoint:** All array problems have 3+ hidden test cases
+
+---
+
+### 4.3 Strings (6 problems)
+- [ ] **Easy:** Reverse String
+- [ ] **Easy:** Valid Palindrome
+- [ ] **Easy:** Valid Anagram
+- [ ] **Medium:** Longest Substring Without Repeating Characters
+- [ ] **Medium:** Group Anagrams
+- [ ] **Hard:** Minimum Window Substring
+
+**✅ Checkpoint:** All string problems complete
+
+---
+
+### 4.4 Hash Tables (5 problems)
+- [ ] **Easy:** Two Sum (already in Arrays, can cross-tag)
+- [ ] **Easy:** First Unique Character in a String
+- [ ] **Medium:** LRU Cache
+- [ ] **Medium:** Subarray Sum Equals K
+- [ ] **Hard:** Longest Consecutive Sequence
+
+**✅ Checkpoint:** All hash table problems complete
+
+---
+
+### 4.5 Linked Lists (5 problems)
+- [ ] **Easy:** Reverse Linked List
+- [ ] **Easy:** Merge Two Sorted Lists
+- [ ] **Medium:** Remove Nth Node From End
+- [ ] **Medium:** Linked List Cycle (detect cycle)
+- [ ] **Hard:** Merge K Sorted Lists
+
+**✅ Checkpoint:** All linked list problems complete
+
+---
+
+### 4.6 Stacks & Queues (4 problems)
+- [ ] **Easy:** Valid Parentheses
+- [ ] **Easy:** Implement Queue using Stacks
+- [ ] **Medium:** Min Stack
+- [ ] **Hard:** Largest Rectangle in Histogram
+
+**✅ Checkpoint:** All stack/queue problems complete
+
+---
+
+### 4.7 Trees & Graphs (5 problems)
+- [ ] **Easy:** Maximum Depth of Binary Tree
+- [ ] **Easy:** Invert Binary Tree
+- [ ] **Medium:** Binary Tree Level Order Traversal
+- [ ] **Medium:** Number of Islands
+- [ ] **Hard:** Serialize and Deserialize Binary Tree
+
+**✅ Checkpoint:** All tree/graph problems complete
+
+---
+
+### 4.8 Dynamic Programming (5 problems)
+- [ ] **Easy:** Climbing Stairs
+- [ ] **Medium:** Coin Change
+- [ ] **Medium:** Longest Increasing Subsequence
+- [ ] **Hard:** Edit Distance
+- [ ] **Hard:** Word Break II
+
+**✅ Checkpoint:** All DP problems complete
+
+---
+
+### 4.9 Sorting & Searching (5 problems)
+- [ ] **Easy:** Binary Search
+- [ ] **Easy:** First Bad Version
+- [ ] **Medium:** Search in Rotated Sorted Array
+- [ ] **Medium:** Find Peak Element
+- [ ] **Hard:** Median of Two Sorted Arrays
+
+**✅ Checkpoint:** All sorting/searching problems complete
+
+---
+
+### 4.10 Problem Quality Checklist
+
+For each problem, ensure:
+- [ ] Clear description with examples
+- [ ] Input/output format documented
+- [ ] Constraints listed
+- [ ] 2+ sample test cases (visible)
+- [ ] 3+ hidden test cases (edge cases, large inputs)
+- [ ] At least one reference solution
+- [ ] Appropriate time/memory limits set
+
+**✅ Checkpoint:** All 30+ problems pass quality checklist
+
+---
+
+### 4.11 Additional Comparators
 - [ ] Implement `StrictComparator` (exact match)
 - [ ] Implement `FloatComparator` (tolerance-based)
 - [ ] Implement `UnorderedComparator` (set comparison)
