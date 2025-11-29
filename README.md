@@ -1,3 +1,17 @@
+- [Sandbox Judge](#sandbox-judge)
+  - [Features (Planned)](#features-planned)
+  - [Requirements](#requirements)
+  - [Quick Start](#quick-start)
+  - [Usage](#usage)
+    - [Available Commands](#available-commands)
+    - [Run Command Flags](#run-command-flags)
+  - [Development](#development)
+  - [Project Structure](#project-structure)
+  - [Documentation](#documentation)
+  - [License](#license)
+  - [Contributing](#contributing)
+
+
 # Sandbox Judge
 
 A self-hosted code evaluation and benchmarking system inspired by LeetCode and Codeforces. Practice coding problems locally with automated judging, multiple language support, and performance measurement.

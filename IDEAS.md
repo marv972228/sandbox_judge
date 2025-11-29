@@ -1,3 +1,42 @@
+- [Sandbox Judge - Ideas \& Future Vision](#sandbox-judge---ideas--future-vision)
+  - [🚀 Distribution \& Self-Hosted Market](#-distribution--self-hosted-market)
+    - [The Self-Hosted Opportunity](#the-self-hosted-opportunity)
+    - [Target Users](#target-users)
+    - [Deployment Goal](#deployment-goal)
+    - [Distribution Formats](#distribution-formats)
+    - [Marketing Channels](#marketing-channels)
+  - [💰 Monetization Models](#-monetization-models)
+    - [Open Core](#open-core)
+    - [Fully Open Source + Services](#fully-open-source--services)
+    - [Source Available](#source-available)
+    - [Potential Revenue Streams](#potential-revenue-streams)
+    - [Pricing Inspiration](#pricing-inspiration)
+    - [Competitive Positioning](#competitive-positioning)
+  - [🎓 Course Platform](#-course-platform)
+    - [Curriculum Structure](#curriculum-structure)
+    - [Content Types](#content-types)
+    - [Instructor Features](#instructor-features)
+    - [Student Features](#student-features)
+    - [Business Models](#business-models)
+  - [🏆 Gamification](#-gamification)
+  - [🔄 Spaced Repetition](#-spaced-repetition)
+  - [🔧 Technical / Infrastructure](#-technical--infrastructure)
+    - [Podman Compatibility](#podman-compatibility)
+    - [Other Container Runtimes](#other-container-runtimes)
+    - [Performance Optimizations](#performance-optimizations)
+  - [📊 Analytics \& Insights](#-analytics--insights)
+  - [🤖 AI Features](#-ai-features)
+  - [🌐 Social Features](#-social-features)
+  - [📱 Mobile App](#-mobile-app)
+  - [🔌 Integrations](#-integrations)
+  - [🧪 Advanced Problem Types](#-advanced-problem-types)
+  - [🏢 Enterprise Features](#-enterprise-features)
+  - [🌍 Community \& Content](#-community--content)
+  - [🎨 UI/UX Enhancements](#-uiux-enhancements)
+  - [💡 Random Ideas](#-random-ideas)
+  - [Notes](#notes)
+
+
 # Sandbox Judge - Ideas & Future Vision
 
 A parking lot for ideas that go beyond MVP. No commitment to build these—just capturing them so they don't get lost.
@@ -177,6 +216,32 @@ Help users retain what they've learned.
 - Suggest problems for review based on forgetting curve
 - "Review mode" resurfaces old problems
 - Difficulty adjusts based on solve history
+
+---
+
+## 🔧 Technical / Infrastructure
+
+Backend and deployment enhancements.
+
+### Podman Compatibility
+Test and verify Podman as a Docker alternative:
+- Podman exposes Docker-compatible API via `podman system service`
+- Our code uses `client.FromEnv` which reads `DOCKER_HOST`
+- Should work with: `export DOCKER_HOST=unix:///run/user/$UID/podman/podman.sock`
+- Benefits: Rootless by default, no daemon, better security model
+- Consider auto-detection of Docker vs Podman socket paths
+
+### Other Container Runtimes
+- **containerd** - Direct containerd integration (skip Docker layer)
+- **Kubernetes** - Run solutions as Jobs/Pods
+- **Firecracker** - MicroVMs for stronger isolation
+- **gVisor** - Sandboxed container runtime
+
+### Performance Optimizations
+- Container pool - Pre-warm containers for faster startup
+- Image caching - Keep language images hot
+- Parallel execution - Run test cases concurrently
+- Resource sharing - Reuse containers for same language
 
 ---
 
