@@ -21,15 +21,15 @@ This document tracks implementation progress with testable milestones.
 ---
 
 ### 1.2 Problem Loader
-- [ ] Define `Problem` struct in `internal/problem/types.go`
-- [ ] Implement YAML parser in `internal/problem/loader.go`
-- [ ] Create first sample problem: `problems/two-sum/`
-  - [ ] `problem.yaml` with metadata
-  - [ ] `tests/sample/1.in`, `tests/sample/1.out`
-  - [ ] `tests/sample/2.in`, `tests/sample/2.out`
-- [ ] Add CLI command: `judge show <problem-id>`
+- [x] Define `Problem` struct in `internal/problem/types.go`
+- [x] Implement YAML parser in `internal/problem/loader.go`
+- [x] Create first sample problem: `problems/two-sum/`
+  - [x] `problem.yaml` with metadata
+  - [x] `tests/sample/1.in`, `tests/sample/1.out`
+  - [x] `tests/sample/2.in`, `tests/sample/2.out`
+- [x] Add CLI commands: `judge list` and `judge show <problem-id>`
 
-**✅ Checkpoint:** `./judge show two-sum` prints problem description
+**✅ Checkpoint:** `./judge show two-sum` prints problem description ✓
 
 ---
 

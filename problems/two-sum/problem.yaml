@@ -1,0 +1,53 @@
+id: two-sum
+title: Two Sum
+difficulty: easy
+tags: [array, hash-table]
+
+time_limit_ms: 1000
+memory_limit_mb: 256
+
+comparison: default
+
+description: |
+  Given an array of integers `nums` and an integer `target`, return the indices 
+  of the two numbers such that they add up to `target`.
+
+  You may assume that each input would have **exactly one solution**, and you 
+  may not use the same element twice.
+
+  You can return the answer in any order.
+
+input_format: |
+  Line 1: Space-separated integers representing the array
+  Line 2: A single integer representing the target
+
+output_format: |
+  Two space-separated integers representing the indices (0-indexed)
+
+constraints:
+  - 2 <= nums.length <= 10^4
+  - -10^9 <= nums[i] <= 10^9
+  - -10^9 <= target <= 10^9
+  - Only one valid answer exists
+
+examples:
+  - input: |
+      2 7 11 15
+      9
+    output: |
+      0 1
+    explanation: "nums[0] + nums[1] = 2 + 7 = 9, so we return [0, 1]."
+  
+  - input: |
+      3 2 4
+      6
+    output: |
+      1 2
+    explanation: "nums[1] + nums[2] = 2 + 4 = 6, so we return [1, 2]."
+  
+  - input: |
+      3 3
+      6
+    output: |
+      0 1
+    explanation: "nums[0] + nums[1] = 3 + 3 = 6, so we return [0, 1]."
