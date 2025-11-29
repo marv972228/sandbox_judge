@@ -9,12 +9,14 @@ This document tracks implementation progress with testable milestones.
 **Goal:** Run a Python solution against a problem and get a verdict.
 
 ### 1.1 Project Setup
-- [ ] Initialize Go module (`go mod init`)
-- [ ] Create directory structure
-- [ ] Add basic `Makefile` with `build`, `test`, `run` targets
-- [ ] Create `.gitignore` (binaries, data/, vendor/, etc.)
+- [x] Initialize Go module (`go mod init`)
+- [x] Create directory structure
+- [x] Add basic `Makefile` with `build`, `test`, `run` targets
+- [x] Create `.gitignore` (binaries, data/, vendor/, etc.)
+- [x] Add Cobra for CLI framework (discovered: need flags, subcommands, help generation)
+- [x] Refactor `main.go` to use Cobra commands
 
-**✅ Checkpoint:** `make build` produces a binary
+**✅ Checkpoint:** `make build` produces a binary, `judge --help` shows auto-generated help
 
 ---
 
