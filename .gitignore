@@ -1,0 +1,49 @@
+# Binaries
+/bin/
+/judge
+*.exe
+
+# Build output
+/dist/
+
+# Go
+*.test
+*.out
+coverage.txt
+
+# User data (submissions, progress)
+/data/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+
+# Dependencies (if vendoring)
+# /vendor/
+
+# Logs
+*.log
+
+# Docker
+docker-compose.override.yml
+
+# MkDocs build output
+/site/
+
+# Temporary files
+tmp/
+*.tmp
+
+# PR Description ignore as its a template
+PR_DESCRIPTION.md
