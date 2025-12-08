@@ -73,6 +73,8 @@ echo "hannaH" > problems/reverse-string/tests/sample/2.out
 
 ### 4. Create Hidden Test Cases
 
+Hidden tests catch naive solutions and edge cases. For algorithmic problems, include:
+
 ```bash
 # Edge case: empty string
 echo "" > problems/reverse-string/tests/hidden/1.in
@@ -82,10 +84,35 @@ echo "" > problems/reverse-string/tests/hidden/1.out
 echo "a" > problems/reverse-string/tests/hidden/2.in
 echo "a" > problems/reverse-string/tests/hidden/2.out
 
-# Large input
+# Large input (stress test)
 python3 -c "print('a' * 10000)" > problems/reverse-string/tests/hidden/3.in
 python3 -c "print('a' * 10000)" > problems/reverse-string/tests/hidden/3.out
 ```
+
+### Using a Test Generator
+
+For complex problems, create a generator script:
+
+```python
+#!/usr/bin/env python3
+# problems/my-problem/tests/generate_tests.py
+
+import random
+
+def generate_worst_case(n):
+    """Generate input that maximizes work for naive solutions."""
+    # ... generate data ...
+    return input_data, expected_output
+
+# Generate and write test files
+for i, (inp, out) in enumerate(test_cases):
+    with open(f"hidden/{i+1}.in", "w") as f:
+        f.write(inp)
+    with open(f"hidden/{i+1}.out", "w") as f:
+        f.write(out)
+```
+
+See `problems/two-sum/tests/generate_tests.py` for a complete example.
 
 ### 5. Verify the Problem
 
@@ -121,6 +148,22 @@ judge run reverse-string solution.py
 2. **Edge cases** - Empty input, single element, boundaries
 3. **Large inputs** - Test performance (close to limits)
 4. **Corner cases** - Negative numbers, duplicates, etc.
+5. **Worst case placement** - Put answers at the end to maximize work for naive solutions
+
+### Catching Naive Solutions
+
+For problems with optimal complexity requirements (e.g., O(n) vs O(n²)):
+
+| Problem Complexity | Recommended n | Operations |
+|-------------------|---------------|------------|
+| O(n) vs O(n²) | 50,000-100,000 | 2.5B-10B for naive |
+| O(n log n) vs O(n²) | 10,000-50,000 | 100M-2.5B for naive |
+| O(log n) vs O(n) | 100,000-1,000,000 | Tests scaling |
+
+**Example for Two Sum (O(n) required):**
+- n=10,000: Naive might barely pass
+- n=50,000: Naive will definitely TLE
+- n=100,000: Guaranteed TLE for naive
 
 ### Time/Memory Limits
 

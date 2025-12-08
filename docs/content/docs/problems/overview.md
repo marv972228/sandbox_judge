@@ -72,6 +72,27 @@ Test cases are pairs of `.in` and `.out` files:
 
 Both are executed when running `judge run`.
 
+### Why Hidden Tests?
+
+Hidden tests serve several purposes:
+
+1. **Catch naive solutions** - Large inputs that timeout O(n²) when O(n) is required
+2. **Edge cases** - Empty inputs, minimum/maximum values, special cases
+3. **Prevent hardcoding** - Ensure solutions actually solve the problem
+
+**Example:** For Two Sum, hidden tests include:
+
+| Test | Size | Purpose |
+|------|------|---------|
+| hidden/1 | n=10,000 | Medium stress test |
+| hidden/2 | n=50,000 | Large stress test |
+| hidden/3 | n=100,000 | Maximum stress test |
+| hidden/4 | n=50,000 | Negative numbers |
+| hidden/5 | n=50,000 | Duplicate values |
+| hidden/6 | n=2 | Minimum edge case |
+
+A naive O(n²) solution passes sample tests but times out on hidden tests.
+
 ## Field Reference
 
 | Field | Required | Description |

@@ -124,9 +124,20 @@ This document tracks implementation progress with testable milestones.
   - [x] Add `mkdocs.yml` with Material theme
   - [x] Add `make docs` and `make docs-serve` targets
   - [x] Write initial docs: Installation, Getting Started, `judge run` command
+- [x] **Unplanned:** Add hidden test cases for two-sum
+  - [x] Create test generator script (`problems/two-sum/tests/generate_tests.py`)
+  - [x] Generate 6 hidden tests (n=10k, 50k, 100k worst cases, negatives, duplicates, edge)
+  - [x] Verify O(n) solution passes all, O(n²) naive times out
+- [x] **Unplanned:** Add detailed solution comments
+  - [x] Update `solutions/two-sum/correct.py` with instructor-style explanation
+  - [x] Add `solutions/two-sum/naive.py` for TLE testing
+- [x] **Unplanned:** Document hidden test best practices
+  - [x] Update `docs/problems/overview.md` with "Why Hidden Tests?" section
+  - [x] Update `docs/problems/creating.md` with test generator guidance
 
 **✅ Checkpoint:** `./judge run two-sum solution.py` returns verdict ✓
 **✅ Checkpoint:** `make docs-serve` shows docs at localhost:8000 ✓
+**✅ Checkpoint:** Naive O(n²) solution gets TLE on hidden tests ✓
 
 ```bash
 # Example output
