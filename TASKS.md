@@ -119,14 +119,14 @@ This document tracks implementation progress with testable milestones.
     - [x] Record verdict (AC/WA/TLE/RE)
   - [x] Aggregate results
 - [x] Add CLI command: `judge run <problem-id> <solution-file>`
-- [ ] **Docs Setup:** Initialize MkDocs scaffolding
-  - [ ] Create `docs/` directory structure (`docs/Dockerfile`, `docs/content/`)
-  - [ ] Add `mkdocs.yml` with Material theme
-  - [ ] Add `make docs` and `make docs-serve` targets
-  - [ ] Write initial docs: Installation, Getting Started, `judge run` command
+- [x] **Docs Setup:** Initialize MkDocs scaffolding
+  - [x] Create `docs/` directory structure (`docs/Dockerfile`, `docs/content/`)
+  - [x] Add `mkdocs.yml` with Material theme
+  - [x] Add `make docs` and `make docs-serve` targets
+  - [x] Write initial docs: Installation, Getting Started, `judge run` command
 
 **✅ Checkpoint:** `./judge run two-sum solution.py` returns verdict ✓
-**✅ Checkpoint:** `make docs-serve` shows docs at localhost:8000
+**✅ Checkpoint:** `make docs-serve` shows docs at localhost:8000 ✓
 
 ```bash
 # Example output
