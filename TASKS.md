@@ -100,13 +100,15 @@ This document tracks implementation progress with testable milestones.
 ---
 
 ### 1.4 Output Comparator
-- [ ] Define `Comparator` interface in `internal/compare/compare.go`
-- [ ] Implement `DefaultComparator` (whitespace-tolerant)
-  - [ ] Trim lines
-  - [ ] Normalize line endings
-  - [ ] Ignore trailing blank lines
+- [x] Define `Comparator` interface in `internal/compare/compare.go`
+- [x] Implement `DefaultComparator` (whitespace-tolerant)
+  - [x] Trim lines
+  - [x] Normalize line endings
+  - [x] Ignore trailing blank lines
+- [x] Implement `StrictComparator` (exact match)
+- [x] Unit tests for edge cases (13 tests passing)
 
-**✅ Checkpoint:** Unit tests pass for comparator edge cases
+**✅ Checkpoint:** Unit tests pass for comparator edge cases ✓
 
 ---
 
