@@ -13,6 +13,7 @@ judge list [flags]
 The `list` command displays all problems available in the problems directory. It shows:
 
 - Problem ID
+- Title
 - Difficulty level
 - Tags/categories
 
@@ -32,8 +33,11 @@ judge list
 
 Output:
 ```
-Available Problems:
-  two-sum      [easy]   arrays, hash-table
+ID                   TITLE                          DIFFICULTY TAGS
+--------------------------------------------------------------------------------
+two-sum              Two Sum                        easy       array, hash-table
+
+1 problem(s) found
 ```
 
 ## Global Flags
