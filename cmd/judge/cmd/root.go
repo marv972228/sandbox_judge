@@ -1,12 +1,16 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 
+	"github.com/marv972228/sandbox_judge/internal/judge"
 	"github.com/marv972228/sandbox_judge/internal/problem"
+	"github.com/marv972228/sandbox_judge/internal/runner"
 	"github.com/spf13/cobra"
 )
 
@@ -190,38 +194,116 @@ Results show verdict (AC/WA/TLE/RE) and timing for each test case.`,
 		verbose, _ := cmd.Flags().GetBool("verbose")
 		testNum, _ := cmd.Flags().GetInt("test")
 
-		// Verify problem exists
-		loader := getLoader()
-		p, err := loader.Load(problemID)
-		if err != nil {
-			return err
-		}
-
 		// Verify solution file exists
 		if _, err := os.Stat(solutionFile); os.IsNotExist(err) {
 			return fmt.Errorf("solution file not found: %s", solutionFile)
 		}
 
-		// Load test cases
-		testCases, err := loader.LoadTestCases(problemID)
+		// Get absolute path for problems dir
+		absProblemDir, err := filepath.Abs(problemsDir)
+		if err != nil {
+			return fmt.Errorf("failed to resolve problems directory: %w", err)
+		}
+
+		// Get docker directory (relative to problems dir's parent)
+		dockerDir := filepath.Join(filepath.Dir(absProblemDir), "docker")
+
+		// Create judge
+		j, err := judge.New(judge.Config{
+			ProblemsDir: absProblemDir,
+			DockerDir:   dockerDir,
+		})
+		if err != nil {
+			return fmt.Errorf("failed to create judge: %w", err)
+		}
+		defer j.Close()
+
+		// Create context with timeout (5 minutes max for entire run)
+		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Minute)
+		defer cancel()
+
+		fmt.Printf("Running %s...\n", problemID)
+
+		var result *judge.Result
+		if testNum > 0 {
+			result, err = j.RunSingleTest(ctx, problemID, solutionFile, testNum)
+		} else {
+			result, err = j.Run(ctx, problemID, solutionFile)
+		}
 		if err != nil {
 			return err
 		}
 
-		if verbose {
-			fmt.Printf("Problem: %s (%s)\n", p.Title, p.Difficulty)
-			fmt.Printf("Solution: %s\n", filepath.Base(solutionFile))
-			fmt.Printf("Test cases: %d\n", len(testCases))
-			fmt.Println()
+		// Print results
+		for i, tr := range result.TestResults {
+			testName := tr.TestCase.Name
+			if testName == "" {
+				testName = fmt.Sprintf("Test %d", i+1)
+			}
+
+			verdictStr := colorVerdict(tr.Verdict)
+			fmt.Printf("  %s: %s (%v)\n", testName, verdictStr, tr.Duration.Round(time.Millisecond))
+
+			// Show diff on WA if verbose
+			if verbose && tr.Verdict == runner.VerdictWrongAnswer {
+				fmt.Println("    Expected:")
+				for _, line := range strings.Split(tr.Expected, "\n") {
+					fmt.Printf("      %s\n", line)
+				}
+				fmt.Println("    Actual:")
+				for _, line := range strings.Split(tr.Actual, "\n") {
+					fmt.Printf("      %s\n", line)
+				}
+			}
+
+			// Show error on RE/TLE/SE if verbose
+			if verbose && tr.Error != "" {
+				fmt.Printf("    Error: %s\n", tr.Error)
+			}
 		}
 
-		if testNum > 0 {
-			fmt.Printf("Running only test case %d\n", testNum)
+		// Print summary
+		fmt.Println()
+		summaryVerdict := colorVerdict(result.FinalVerdict)
+		if result.FinalVerdict == runner.VerdictAccepted {
+			fmt.Printf("Result: %s (%d/%d tests passed)\n", summaryVerdict, result.Passed, result.Total)
+		} else {
+			fmt.Printf("Result: %s (%d/%d tests passed)\n", summaryVerdict, result.Passed, result.Total)
 		}
+		fmt.Printf("Total time: %v\n", result.TotalDuration.Round(time.Millisecond))
 
-		fmt.Printf("TODO: Run %s against %s (%d test cases)\n", solutionFile, problemID, len(testCases))
 		return nil
 	},
+}
+
+// colorVerdict returns a colored verdict string
+func colorVerdict(v runner.Verdict) string {
+	// ANSI color codes
+	const (
+		green  = "\033[32m"
+		red    = "\033[31m"
+		yellow = "\033[33m"
+		reset  = "\033[0m"
+	)
+
+	switch v {
+	case runner.VerdictAccepted:
+		return green + "AC" + reset
+	case runner.VerdictWrongAnswer:
+		return red + "WA" + reset
+	case runner.VerdictTimeLimitExceeded:
+		return yellow + "TLE" + reset
+	case runner.VerdictMemoryLimitExceeded:
+		return yellow + "MLE" + reset
+	case runner.VerdictRuntimeError:
+		return red + "RE" + reset
+	case runner.VerdictCompilationError:
+		return red + "CE" + reset
+	case runner.VerdictSystemError:
+		return red + "SE" + reset
+	default:
+		return string(v)
+	}
 }
 
 func init() {

@@ -1,4 +1,4 @@
-.PHONY: build test run clean help docker-build docker-build-python
+.PHONY: build test run clean help docker-build docker-build-python docs docs-serve docs-build
 
 # Binary name
 BINARY=judge
@@ -55,6 +55,22 @@ docker-build: docker-build-python
 docker-build-python:
 	@echo "Building Python runner image..."
 	docker build -t sandbox-judge-python:latest ./docker/python
+
+## docs: Build documentation (alias for docs-build)
+docs: docs-build
+
+## docs-serve: Start documentation dev server with live reload
+docs-serve:
+	@echo "Starting docs server at http://localhost:8000..."
+	@docker build -t sandbox-judge-docs ./docs
+	@docker run --rm -it -p 8000:8000 -v $(PWD)/docs/content:/docs sandbox-judge-docs
+
+## docs-build: Build static documentation site
+docs-build:
+	@echo "Building documentation..."
+	@docker build -t sandbox-judge-docs ./docs
+	@docker run --rm -v $(PWD)/docs/content:/docs sandbox-judge-docs mkdocs build
+	@echo "Documentation built to docs/content/site/"
 
 ## help: Show this help
 help:
