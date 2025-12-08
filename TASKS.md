@@ -35,13 +35,11 @@
     - [6.1 Better Error Handling](#61-better-error-handling)
     - [6.2 Performance](#62-performance)
     - [6.3 Documentation](#63-documentation)
-  - [Phase 7: Documentation Site](#phase-7-documentation-site)
-    - [7.1 MkDocs Setup](#71-mkdocs-setup)
-    - [7.2 User Documentation](#72-user-documentation)
-    - [7.3 Problem Author Documentation](#73-problem-author-documentation)
-    - [7.4 Deployment Documentation](#74-deployment-documentation)
-    - [7.5 Developer Documentation](#75-developer-documentation)
-    - [7.6 Publishing](#76-publishing)
+  - [Phase 7: Documentation Polish \& Publishing](#phase-7-documentation-polish--publishing)
+    - [7.1 Documentation Review](#71-documentation-review)
+    - [7.2 Deployment Documentation](#72-deployment-documentation)
+    - [7.3 Developer Documentation](#73-developer-documentation)
+    - [7.4 Publishing](#74-publishing)
   - [Future Ideas (Backlog)](#future-ideas-backlog)
   - [Current Focus](#current-focus)
   - [Notes](#notes)
@@ -121,8 +119,14 @@ This document tracks implementation progress with testable milestones.
     - [ ] Record verdict (AC/WA/TLE/RE)
   - [ ] Aggregate results
 - [ ] Add CLI command: `judge run <problem-id> <solution-file>`
+- [ ] **Docs Setup:** Initialize MkDocs scaffolding
+  - [ ] Create `docs/` directory structure (`docs/Dockerfile`, `docs/content/`)
+  - [ ] Add `mkdocs.yml` with Material theme
+  - [ ] Add `make docs` and `make docs-serve` targets
+  - [ ] Write initial docs: Installation, Getting Started, `judge run` command
 
 **✅ Checkpoint:** `./judge run two-sum solution.py` returns verdict
+**✅ Checkpoint:** `make docs-serve` shows docs at localhost:8000
 
 ```bash
 # Example output
@@ -140,6 +144,7 @@ Result: ACCEPTED (2/2 tests passed)
 - [ ] Add `judge run --test N` - run specific test only
 - [ ] Add `judge run --verbose` - show input/output diff on failure
 - [ ] Colorized output (green AC, red WA, yellow TLE)
+- [ ] **Docs:** Update CLI reference with new flags
 
 **✅ Checkpoint:** CLI feels usable for daily practice
 
@@ -184,6 +189,7 @@ Result: ACCEPTED (2/2 tests passed)
 - [ ] Add compile step to runner for compiled languages
 - [ ] Capture compilation errors → CE verdict
 - [ ] Cache compiled binaries (optional optimization)
+- [ ] **Docs:** Add "Supported Languages" page with setup instructions for each
 
 **✅ Checkpoint:** C++ syntax error returns "Compilation Error"
 
@@ -208,6 +214,7 @@ Result: ACCEPTED (2/2 tests passed)
 - [ ] Track problem status: not_attempted → attempted → solved
 - [ ] Add CLI command: `judge status` - show overall progress
 - [ ] Add CLI command: `judge history <problem-id>` - show past submissions
+- [ ] **Docs:** Document progress tracking, `judge status`, `judge history`
 
 **✅ Checkpoint:** `./judge status` shows progress summary
 
@@ -344,6 +351,7 @@ For each problem, ensure:
 - [ ] 3+ hidden test cases (edge cases, large inputs)
 - [ ] At least one reference solution
 - [ ] Appropriate time/memory limits set
+- [ ] **Docs:** Add "Problem Author Guide" with `problem.yaml` schema, test case format, comparator modes
 
 **✅ Checkpoint:** All 30+ problems pass quality checklist
 
@@ -411,6 +419,7 @@ For each problem, ensure:
 - [ ] Show "Judging..." state
 - [ ] Display verdict with test case breakdown
 - [ ] Show runtime/memory stats
+- [ ] **Docs:** Add Web UI guide with screenshots, REST API reference
 
 **✅ Checkpoint:** Full submit → judge → result flow works
 
@@ -435,42 +444,23 @@ For each problem, ensure:
 
 ---
 
-## Phase 7: Documentation Site
+## Phase 7: Documentation Polish & Publishing
 
-**Goal:** Professional docs site for users, contributors, and deployers.
+**Goal:** Finalize and publish professional documentation.
 
-### 7.1 MkDocs Setup
-- [ ] Install MkDocs and Material theme
-- [ ] Create `mkdocs.yml` configuration
-- [ ] Create `docs/` directory structure
-- [ ] Add `make docs` and `make docs-serve` targets
+> **Note:** MkDocs scaffolding is set up in Phase 1.5. Docs are updated incrementally with each phase. This phase focuses on polish and publishing.
 
-**✅ Checkpoint:** `make docs-serve` shows docs at localhost:8000
+### 7.1 Documentation Review
+- [ ] Review all existing docs for completeness
+- [ ] Add missing sections discovered during development
+- [ ] Ensure all CLI commands are documented
+- [ ] Verify all code examples work
 
----
-
-### 7.2 User Documentation
-- [ ] Installation guide (prerequisites, setup)
-- [ ] Quickstart tutorial (solve first problem)
-- [ ] CLI reference (all commands documented)
-- [ ] Web UI guide (screenshots, workflows)
-- [ ] Supported languages list
-
-**✅ Checkpoint:** New user can get started from docs alone
+**✅ Checkpoint:** Docs cover 100% of features
 
 ---
 
-### 7.3 Problem Author Documentation
-- [ ] `problem.yaml` schema reference
-- [ ] Test case format and best practices
-- [ ] Comparator modes explained
-- [ ] Walkthrough: creating a new problem
-
-**✅ Checkpoint:** Can create a new problem following only the docs
-
----
-
-### 7.4 Deployment Documentation
+### 7.2 Deployment Documentation
 - [ ] Docker single-container setup
 - [ ] Docker Compose full stack
 - [ ] Environment variables reference
@@ -480,7 +470,7 @@ For each problem, ensure:
 
 ---
 
-### 7.5 Developer Documentation
+### 7.3 Developer Documentation
 - [ ] Architecture overview (adapted from DESIGN.md)
 - [ ] Contributing guide (code style, PR process)
 - [ ] Adding a new language guide
@@ -490,10 +480,11 @@ For each problem, ensure:
 
 ---
 
-### 7.6 Publishing
+### 7.4 Publishing
 - [ ] GitHub Actions to build docs on push
 - [ ] Deploy to GitHub Pages (or alternative)
 - [ ] Add version dropdown (if needed)
+- [ ] Custom domain setup (optional)
 
 **✅ Checkpoint:** Docs live at `https://marv972228.github.io/sandbox_judge`
 
@@ -517,7 +508,7 @@ Not planned for MVP, but captured for later:
 
 ## Current Focus
 
-> **Now working on:** Phase 1.1 - Project Setup
+> **Now working on:** Phase 1.5 - Judge Engine + Docs Setup
 
 ---
 
