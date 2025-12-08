@@ -111,21 +111,21 @@ This document tracks implementation progress with testable milestones.
 ---
 
 ### 1.5 Judge Engine (Core Loop)
-- [ ] Implement `Judge` in `internal/judge/judge.go`
-  - [ ] Load problem
-  - [ ] For each test case:
-    - [ ] Run submission in container
-    - [ ] Compare output
-    - [ ] Record verdict (AC/WA/TLE/RE)
-  - [ ] Aggregate results
-- [ ] Add CLI command: `judge run <problem-id> <solution-file>`
+- [x] Implement `Judge` in `internal/judge/judge.go`
+  - [x] Load problem
+  - [x] For each test case:
+    - [x] Run submission in container
+    - [x] Compare output
+    - [x] Record verdict (AC/WA/TLE/RE)
+  - [x] Aggregate results
+- [x] Add CLI command: `judge run <problem-id> <solution-file>`
 - [ ] **Docs Setup:** Initialize MkDocs scaffolding
   - [ ] Create `docs/` directory structure (`docs/Dockerfile`, `docs/content/`)
   - [ ] Add `mkdocs.yml` with Material theme
   - [ ] Add `make docs` and `make docs-serve` targets
   - [ ] Write initial docs: Installation, Getting Started, `judge run` command
 
-**✅ Checkpoint:** `./judge run two-sum solution.py` returns verdict
+**✅ Checkpoint:** `./judge run two-sum solution.py` returns verdict ✓
 **✅ Checkpoint:** `make docs-serve` shows docs at localhost:8000
 
 ```bash
