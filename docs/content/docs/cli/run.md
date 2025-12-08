@@ -102,13 +102,17 @@ judge run two-sum solution.py --timeout 5s
 
 ## Verdicts
 
-| Verdict | Description |
-|---------|-------------|
-| **AC** (Accepted) | Output matches expected exactly |
-| **WA** (Wrong Answer) | Output doesn't match expected |
-| **TLE** (Time Limit Exceeded) | Execution exceeded time limit |
-| **RE** (Runtime Error) | Program crashed or non-zero exit |
-| **SE** (System Error) | Internal judge error |
+Verdicts are colorized in the terminal for quick visual feedback:
+
+| Verdict | Color | Description |
+|---------|-------|-------------|
+| **AC** (Accepted) | 🟢 Green | Output matches expected exactly |
+| **WA** (Wrong Answer) | 🔴 Red | Output doesn't match expected |
+| **TLE** (Time Limit Exceeded) | 🟡 Yellow | Execution exceeded time limit |
+| **MLE** (Memory Limit Exceeded) | 🟡 Yellow | Execution exceeded memory limit |
+| **RE** (Runtime Error) | 🔴 Red | Program crashed or non-zero exit |
+| **CE** (Compilation Error) | 🔴 Red | Failed to compile (compiled languages) |
+| **SE** (System Error) | 🔴 Red | Internal judge error |
 
 ## Output Comparison
 

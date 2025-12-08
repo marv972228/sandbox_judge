@@ -151,13 +151,13 @@ Result: ACCEPTED (2/2 tests passed)
 ---
 
 ### 1.6 Basic CLI Polish
-- [ ] Add `judge list` - list all problems
-- [ ] Add `judge run --test N` - run specific test only
-- [ ] Add `judge run --verbose` - show input/output diff on failure
-- [ ] Colorized output (green AC, red WA, yellow TLE)
-- [ ] **Docs:** Update CLI reference with new flags
+- [x] Add `judge list` - list all problems (with ID, title, difficulty, tags)
+- [x] Add `judge run --test N` - run specific test only
+- [x] Add `judge run --verbose` - show input/output diff on failure
+- [x] Colorized output (green AC, red WA/RE, yellow TLE/MLE)
+- [x] **Docs:** Update CLI reference with new flags and colorized verdict table
 
-**✅ Checkpoint:** CLI feels usable for daily practice
+**✅ Checkpoint:** CLI feels usable for daily practice ✓
 
 ---
 
@@ -519,7 +519,7 @@ Not planned for MVP, but captured for later:
 
 ## Current Focus
 
-> **Now working on:** Phase 1.5 - Judge Engine + Docs Setup
+> **Phase 1 Complete!** All foundation tasks done. Ready for Phase 2 - Multi-Language Support.
 
 ---
 
